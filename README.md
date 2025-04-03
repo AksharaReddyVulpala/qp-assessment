@@ -98,7 +98,7 @@ This Repo provides backend functionality for a grocery store management system w
 Clone the project
 
 ```bash
-  git clone https://github.com/AksharaReddyVulpala/qp-assignment.git
+  git clone https://github.com/AksharaReddyVulpala/qp-assessment.git
 ```
 
 Go to the project directory
