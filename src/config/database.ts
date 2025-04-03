@@ -8,14 +8,15 @@ import { Cart } from '../models/cart.js';
 import { setupAssociations } from '../models/associations.js';
 import { Order } from '../models/order.js';
 import { OrderItem } from '../models/order-items.js';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const sequelize = new Sequelize({
-  database: 'grocery_buying',
+  database: process.env.DB_NAME,
   dialect: 'mysql',
-  username: 'root',
-  password: 'Aksh@1234',
-  host: 'localhost',
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
   models: [User,Item,CartItem,Cart,Order,OrderItem],
   logging: false,
 });
