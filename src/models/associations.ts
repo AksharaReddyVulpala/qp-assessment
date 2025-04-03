@@ -6,29 +6,29 @@ import { Order } from './order.js';
 import { OrderItem } from './order-items.js';
 
 export function setupAssociations() {
-    // User-Cart relationship (1:1)
+    
     User.hasOne(Cart, {
       foreignKey: 'userId',
-      as: 'userCart'  // Changed from 'cart' to make unique
+      as: 'userCart'  
     });
   
     Cart.belongsTo(User, {
       foreignKey: 'userId',
-      as: 'cartOwner'  // Changed from 'user' to make unique
+      as: 'cartOwner' 
     });
   
-    // Item-CartItem relationship (1:M)
+    
     Item.hasMany(CartItem, {
       foreignKey: 'itemId',
-      as: 'inCarts'  // Changed from 'cartItems'
+      as: 'inCarts'  
     });
   
     CartItem.belongsTo(Item, {
       foreignKey: 'itemId',
-      as: 'cartItemProduct'  // Changed from 'item'
+      as: 'cartItemProduct'  
     });
   
-    // User-Order relationship (1:M)
+    
     User.hasMany(Order, {
       foreignKey: 'userId',
       as: 'userOrders'
@@ -39,7 +39,7 @@ export function setupAssociations() {
       as: 'orderCustomer'
     });
   
-    // Order-OrderItem relationship (1:M)
+    
     Order.hasMany(OrderItem, {
       foreignKey: 'orderId',
       as: 'orderedItems'
@@ -50,14 +50,14 @@ export function setupAssociations() {
       as: 'parentOrder'
     });
   
-    // Item-OrderItem relationship (1:M)
+    
     Item.hasMany(OrderItem, {
       foreignKey: 'itemId',
-      as: 'itemOrders'  // Changed from 'orderItems'
+      as: 'itemOrders'  
     });
   
     OrderItem.belongsTo(Item, {
       foreignKey: 'itemId',
-      as: 'orderedProduct'  // Changed from 'item'
+      as: 'orderedProduct'  
     });
   }

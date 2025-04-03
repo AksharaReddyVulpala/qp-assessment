@@ -1,8 +1,6 @@
-// src/controllers/order.controller.ts
 import { Request, Response } from 'express';
 import { sequelize } from '../config/database.js';
 import { v4 as uuidv4 } from 'uuid';
-// import { Cart, CartItem, Item, Order, OrderItem } from '../models/index.js';
 import { Cart } from '../models/cart.js';
 import { CartItem } from '../models/cart-item.js';
 import { Item } from '../models/grocery-items.js';
@@ -15,7 +13,7 @@ export const placeOrder = async (req: Request, res: Response) => {
   const transaction = await sequelize.transaction();
 
   try {
-    // 1. Get user's cart with items
+    
     const cart = await Cart.findOne({
       where: { userId },
       include: [{
@@ -32,7 +30,7 @@ export const placeOrder = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Cart is empty' });
     }
 
-    // 2. Validate items and calculate total
+  
     let totalAmount = 0;
     const orderItems: Array<{
       itemId: number;
@@ -58,12 +56,12 @@ export const placeOrder = async (req: Request, res: Response) => {
         priceAtOrder: item.price
       });
 
-      // Update inventory
+      
       item.quantity -= cartItem.quantity;
       await item.save({ transaction });
     }
 
-    // 3. Create order
+   
     const order = await Order.create({
       orderId: uuidv4(),
       userId,
@@ -71,13 +69,13 @@ export const placeOrder = async (req: Request, res: Response) => {
       status: 'pending'
     }, { transaction });
 
-    // 4. Add order items
+    
     await OrderItem.bulkCreate(
       orderItems.map(oi => ({ ...oi, orderId: order.orderId })),
       { transaction }
     );
 
-    // 5. Clear cart
+   
     await CartItem.destroy({ 
       where: { cartId: cart.id },
       transaction

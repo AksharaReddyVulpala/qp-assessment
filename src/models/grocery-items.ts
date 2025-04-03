@@ -49,6 +49,5 @@ export class Item extends Model {
   })
   isActive!: boolean;
 
-  // @HasMany(() => CartItem)
-  // cartItems!: CartItem[];
+
 }

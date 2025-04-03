@@ -8,9 +8,6 @@ export class Cart extends Model {
   @Column
   userId!: number;
   
-//   @BelongsTo(() => User)
-//   user!: User;
-
   @HasMany(() => CartItem)
   cartItems!: CartItem[];
 

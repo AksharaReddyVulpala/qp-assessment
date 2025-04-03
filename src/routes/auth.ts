@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { signup,login } from '../controllers/auth.js';
-//import { validateSignup } from '../middlewares/validation.middleware.js';
+
 
 const router = Router();
 
-// Corrected route definition
+
 
 
 

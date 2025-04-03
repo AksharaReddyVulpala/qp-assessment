@@ -10,15 +10,13 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
-// Middleware
+
 app.use(express.json());
 
-// Routes
 
 app.use('/api/auth', authRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/cart', cartRouter);
-// Error handling
 
 app.use((err: Error, req: Request, res: Response) => {
   console.error(err.stack);

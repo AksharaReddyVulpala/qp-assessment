@@ -67,8 +67,6 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
   })
   declare updatedAt: Date;
 
-  // @HasOne(() => Cart)
-  // cart!: Cart;
 
   @BeforeCreate
   static async hashPassword(user: User) {
@@ -81,7 +79,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
   }
 }
 
-// DTO Interfaces
+
 export interface SignupDTO {
   name: string;
   email: string;

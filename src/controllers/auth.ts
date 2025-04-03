@@ -8,7 +8,7 @@ export const signup = async (req: Request, res: Response) => {
   try {
     const { name, email, password, confirmPassword, isAdmin }: SignupDTO = req.body;
 
-    // Validation
+  
     if (password !== confirmPassword) {
       return res.status(400).json({ message: 'Passwords do not match' });
     }

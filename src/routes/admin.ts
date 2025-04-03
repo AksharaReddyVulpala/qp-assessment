@@ -11,7 +11,7 @@ import { authenticate } from '../middlewares/auth.js';
 
 const router = Router();
 
-// Apply authentication and admin verification to all admin routes
+
 router.use((req, res, next) => {
     authenticate(req, res, (err?: any) => {
       if (err) return next(err);
@@ -21,7 +21,7 @@ router.use((req, res, next) => {
 
 
 
-// Item management routes
+
 router.get('/items', getAllItems);
 router.post('/items', addItem);
 router.delete('/items/:id', removeItem);

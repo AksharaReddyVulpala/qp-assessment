@@ -22,7 +22,7 @@ export const sequelize = new Sequelize({
 
 export async function initializeDatabase() {
   try {
-    // Create database if not exists
+    
     const setupSequelize = new Sequelize({
       dialect: 'mysql',
       username: 'root',
@@ -33,7 +33,7 @@ export async function initializeDatabase() {
     await setupSequelize.query(`CREATE DATABASE IF NOT EXISTS grocery_buying;`);
     await setupSequelize.close();
 
-    // Authenticate and sync models
+   
     await sequelize.authenticate();
     setupAssociations();
     await sequelize.sync({ alter: false }); 

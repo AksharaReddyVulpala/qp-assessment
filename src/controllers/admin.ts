@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { Item } from '../models/grocery-items.js';
 import { User } from '../models/user.js';
 
-// Middleware to verify admin role
+
 export const verifyAdmin = async (req: Request, res: Response, next: Function) => {
   try {
     const user = await User.findByPk(req.userId);
@@ -15,7 +15,7 @@ export const verifyAdmin = async (req: Request, res: Response, next: Function) =
   }
 };
 
-// 1. View all items
+
 export const getAllItems = async (req: Request, res: Response) => {
   try {
     const items = await Item.findAll();
@@ -25,7 +25,7 @@ export const getAllItems = async (req: Request, res: Response) => {
   }
 };
 
-// 2. Add new item
+
 export const addItem = async (req: Request, res: Response) => {
   try {
     console.log("req.body",req.body)
@@ -38,7 +38,7 @@ export const addItem = async (req: Request, res: Response) => {
   }
 };
 
-// 3. Remove item
+
 export const removeItem = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -49,7 +49,7 @@ export const removeItem = async (req: Request, res: Response) => {
   }
 };
 
-// 4. Update item details
+
 export const updateItem = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -64,7 +64,7 @@ export const updateItem = async (req: Request, res: Response) => {
   }
 };
 
-// 5. Manage inventory
+
 export const updateInventory = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
