@@ -26,14 +26,15 @@ export async function initializeDatabase() {
     
     const setupSequelize = new Sequelize({
       dialect: 'mysql',
-      username: 'root',
-      password: 'Aksh@1234',
+      username: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
       logging: false,
     });
     
-    await setupSequelize.query(`CREATE DATABASE IF NOT EXISTS grocery_buying;`);
+    await setupSequelize.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME};`);
     await setupSequelize.close();
 
+  
    
     await sequelize.authenticate();
     setupAssociations();
